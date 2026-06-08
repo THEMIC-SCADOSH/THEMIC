@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concordia Comprehensive School | Excellence in Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a4a2e;
+    --forest-mid: #256b42;
+    --forest-light: #3d8f5f;
+    --gold: #c9943a;
+    --gold-light: #e8b55a;
+    --gold-pale: #fdf3e0;
+    --cream: #f8f5ef;
+    --dark: #1a1a18;
+    --text: #2c2c28;
+    --muted: #6b6b60;
+    --white: #ffffff;
+    --border: #e0dbd0;
+    --red-kenya: #c0392b;
+    --card-shadow: 0 4px 24px rgba(26,74,46,0.10);
+    --gold-shadow: 0 4px 24px rgba(201,148,58,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(26,74,46,0.97);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem; height: 68px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--forest);
+  }
+  .nav-title { color: var(--white); font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; line-height: 1.2; }
+  .nav-title span { display: block; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 400; color: var(--gold-light); letter-spacing: 1.5px; text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.82); font-size: 13px; font-weight: 500; text-decoration: none; letter-spacing: 0.3px; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta { background: var(--gold); color: var(--forest) !important; padding: 8px 18px; border-radius: 6px; font-weight: 600 !important; transition: background .2s !important; }
+  .nav-cta:hover { background: var(--gold-light) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    background: linear-gradient(135deg, var(--forest) 0%, #0d2e1c 60%, #122618 100%);
+    padding-top: 68px;
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.07;
+    background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 24px 24px;
+  }
+  .hero-accent {
+    position: absolute; right: -80px; top: -80px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,148,58,0.18) 0%, transparent 70%);
+  }
+  .hero-content { position: relative; z-index: 2; padding: 0 3rem; max-width: 680px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,148,58,0.18); border: 1px solid rgba(201,148,58,0.4);
+    color: var(--gold-light); font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 2rem;
+  }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .hero-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 1.2rem;
+  }
+  .hero-title em { color: var(--gold-light); font-style: normal; }
+  .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--forest); font-weight: 600; font-size: 14px;
+    padding: 13px 28px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer;
+    transition: background .2s, transform .15s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white); font-weight: 500; font-size: 14px;
+    padding: 13px 28px; border-radius: 8px; text-decoration: none;
+    border: 1.5px solid rgba(255,255,255,0.35); transition: border-color .2s, background .2s;
+  }
+  .btn-outline:hover { border-color: var(--gold-light); background: rgba(201,148,58,0.12); }
+  .hero-stats {
+    position: absolute; bottom: 60px; right: 3rem; z-index: 2;
+    display: flex; gap: 2px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; overflow: hidden;
+  }
+  .stat { padding: 20px 28px; text-align: center; }
+  .stat + .stat { border-left: 1px solid rgba(255,255,255,0.1); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold-light); display: block; }
+  .stat-lbl { font-size: 11px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 90px 3rem; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--forest); line-height: 1.2; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 560px; }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.centered { text-align: center; }
+  .section-header.centered .section-sub { margin: 0 auto; }
+
+  /* ─── ABOUT ─── */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-img-wrap { position: relative; }
+  .about-img {
+    width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 16px;
+    background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 3rem; color: rgba(255,255,255,0.3);
+  }
+  .about-img-card {
+    position: absolute; bottom: -24px; right: -24px;
+    background: var(--gold); color: var(--forest);
+    padding: 20px 24px; border-radius: 12px; text-align: center;
+    box-shadow: var(--gold-shadow);
+  }
+  .about-img-card strong { display: block; font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; }
+  .about-img-card span { font-size: 12px; font-weight: 500; opacity: .8; }
+  .about-vals { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .val-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .val-icon { width: 40px; height: 40px; min-width: 40px; border-radius: 10px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .val-text h4 { font-size: 14px; font-weight: 600; color: var(--forest); margin-bottom: 2px; }
+  .val-text p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── ACADEMICS ─── */
+  #academics { background: var(--cream); }
+  .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .program-card {
+    background: var(--white); border-radius: 14px; padding: 2rem 1.5rem;
+    border: 1px solid var(--border); transition: transform .25s, box-shadow .25s;
+    position: relative; overflow: hidden;
+  }
+  .program-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--forest); border-radius: 14px 14px 0 0;
+    transform: scaleX(0); transform-origin: left; transition: transform .3s;
+  }
+  .program-card:hover { transform: translateY(-6px); box-shadow: var(--card-shadow); }
+  .program-card:hover::after { transform: scaleX(1); }
+  .prog-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .program-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--forest); margin-bottom: .5rem; }
+  .program-card p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 1rem; }
+  .program-card ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .program-card ul li { font-size: 12px; color: var(--text); padding-left: 14px; position: relative; }
+  .program-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--forest-light); font-weight: 700; font-size: 11px; }
+
+  /* ─── FACILITIES ─── */
+  #facilities { background: var(--forest); }
+  #facilities .section-title { color: var(--white); }
+  #facilities .section-label { color: var(--gold-light); }
+  #facilities .section-sub { color: rgba(255,255,255,0.65); }
+  .facilities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; }
+  .facility-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px; padding: 1.6rem 1.4rem;
+    transition: background .25s, transform .25s;
+    display: flex; flex-direction: column; gap: .8rem;
+  }
+  .facility-card:hover { background: rgba(201,148,58,0.15); transform: translateY(-4px); }
+  .fac-icon { font-size: 2rem; }
+  .facility-card h4 { font-size: 14px; font-weight: 600; color: var(--white); }
+  .facility-card p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+  .fac-badge { align-self: flex-start; background: rgba(201,148,58,0.25); color: var(--gold-light); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 20px; letter-spacing: .5px; }
+
+  /* ─── STAFF ─── */
+  #staff { background: var(--white); }
+  .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .staff-card { background: var(--cream); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); transition: box-shadow .25s; text-align: center; }
+  .staff-card:hover { box-shadow: var(--card-shadow); }
+  .staff-avatar {
+    width: 100%; height: 140px;
+    background: linear-gradient(135deg, var(--forest-light) 0%, var(--forest) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: rgba(255,255,255,0.6);
+  }
+  .staff-info { padding: 1.2rem 1rem 1.4rem; }
+  .staff-info h4 { font-weight: 600; font-size: 15px; color: var(--forest); margin-bottom: 4px; }
+  .staff-info .role { font-size: 12px; color: var(--gold); font-weight: 500; margin-bottom: 6px; }
+  .staff-info p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── PORTAL ─── */
+  #portal { background: var(--cream); }
+  .portal-wrap {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start;
+  }
+  .portal-login {
+    background: var(--white); border-radius: 16px; padding: 2.5rem 2rem;
+    border: 1px solid var(--border); box-shadow: var(--card-shadow);
+  }
+  .portal-login h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--forest); margin-bottom: .5rem; }
+  .portal-login p { font-size: 13px; color: var(--muted); margin-bottom: 2rem; }
+  .form-field { margin-bottom: 1.2rem; }
+  .form-field label { display: block; font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: .3px; }
+  .form-field input, .form-field select {
+    width: 100%; padding: 11px 14px; border-radius: 8px;
+    border: 1.5px solid var(--border); font-family: 'DM Sans', sans-serif;
+    font-size: 14px; color: var(--text); background: var(--cream);
+    outline: none; transition: border-color .2s;
+  }
+  .form-field input:focus, .form-field select:focus { border-color: var(--forest-light); background: var(--white); }
+  .portal-btn {
+    width: 100%; background: var(--forest); color: var(--white); border: none;
+    padding: 13px; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 600; cursor: pointer; transition: background .2s;
+    margin-top: .5rem;
+  }
+  .portal-btn:hover { background: var(--forest-mid); }
+  .portal-demo-note {
+    font-size: 11px; color: var(--muted); text-align: center; margin-top: 1rem;
+    padding: 8px; background: var(--gold-pale); border-radius: 6px;
+  }
+
+  /* Portal Dashboard */
+  .portal-dashboard { display: none; }
+  .portal-dashboard.active { display: block; }
+  .dash-header {
+    background: var(--forest); color: var(--white);
+    border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .student-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 4px; }
+  .student-info p { font-size: 13px; opacity: .7; }
+  .dash-badges { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
+  .dbadge {
+    font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+    background: rgba(255,255,255,0.15); color: var(--white);
+  }
+  .dbadge.good { background: rgba(61,143,95,0.5); }
+  .dbadge.warn { background: rgba(201,148,58,0.5); }
+  .dash-tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .dash-tab {
+    padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    border: 1.5px solid var(--border); background: var(--white); color: var(--muted);
+    cursor: pointer; transition: all .2s;
+  }
+  .dash-tab.active { background: var(--forest); color: var(--white); border-color: var(--forest); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Grades panel */
+  .grades-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .grades-table th { background: var(--forest); color: var(--white); font-size: 12px; font-weight: 600; padding: 12px 16px; text-align: left; }
+  .grades-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--border); }
+  .grades-table tr:last-child td { border-bottom: none; }
+  .grade-pill {
+    display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+  }
+  .grade-A { background: #d4f0e0; color: #1a6b3a; }
+  .grade-B { background: #d8ecf8; color: #1a5278; }
+  .grade-C { background: #fef3d0; color: #7d5a0a; }
+
+  /* Attendance panel */
+  .att-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .att-card { background: var(--white); border-radius: 12px; padding: 1.2rem; border: 1px solid var(--border); text-align: center; }
+  .att-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--forest); }
+  .att-lbl { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .att-calendar { background: var(--white); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border); }
+  .att-calendar h4 { font-size: 14px; font-weight: 600; color: var(--forest); margin-bottom: 1rem; }
+  .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .cal-day { aspect-ratio: 1; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; }
+  .cal-day.present { background: #d4f0e0; color: #1a6b3a; }
+  .cal-day.absent { background: #fde8e8; color: #9b2222; }
+  .cal-day.weekend { background: var(--border); color: var(--muted); }
+  .cal-day.future { background: transparent; color: var(--border); }
+  .cal-header { font-size: 10px; font-weight: 600; color: var(--muted); text-align: center; }
+
+  /* Fees panel */
+  .fees-overview {
+    background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+    border-radius: 14px; padding: 2rem; color: var(--white); margin-bottom: 1.5rem;
+  }
+  .fees-overview h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+  .fees-amounts { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .fee-amount { text-align: left; }
+  .fee-amount .amount { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold-light); }
+  .fee-amount .lbl { font-size: 11px; opacity: .7; text-transform: uppercase; letter-spacing: 1px; }
+  .progress-bar { background: rgba(255,255,255,0.2); border-radius: 10px; height: 8px; margin-top: 1.5rem; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 10px; width: 60%; transition: width .6s; }
+  .payment-form { background: var(--white); border-radius: 14px; padding: 2rem; border: 1px solid var(--border); }
+  .payment-form h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--forest); margin-bottom: 1.5rem; }
+  .payment-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-bottom: 1.5rem; }
+  .pay-method {
+    border: 2px solid var(--border); border-radius: 10px; padding: 1rem .8rem;
+    text-align: center; cursor: pointer; transition: all .2s;
+  }
+  .pay-method.selected { border-color: var(--forest); background: rgba(26,74,46,0.06); }
+  .pay-method .pm-icon { font-size: 1.5rem; margin-bottom: 4px; }
+  .pay-method .pm-name { font-size: 11px; font-weight: 600; color: var(--text); }
+  .pay-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .pay-success {
+    display: none; background: #d4f0e0; border-radius: 12px; padding: 2rem;
+    text-align: center; border: 1px solid #9dd4b5;
+  }
+  .pay-success.show { display: block; }
+  .pay-success h4 { color: #1a6b3a; font-size: 1.2rem; margin-bottom: .5rem; }
+  .pay-success p { color: #2d7a4a; font-size: 13px; }
+
+  /* Messages panel */
+  .messages-list { display: flex; flex-direction: column; gap: 1rem; }
+  .message-item { background: var(--white); border-radius: 12px; padding: 1.2rem 1.4rem; border: 1px solid var(--border); border-left: 4px solid var(--forest); }
+  .message-item.unread { border-left-color: var(--gold); background: var(--gold-pale); }
+  .msg-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+  .msg-from { font-size: 13px; font-weight: 600; color: var(--forest); }
+  .msg-date { font-size: 11px; color: var(--muted); }
+  .msg-subject { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .msg-preview { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--forest); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-label { color: var(--gold-light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .contact-info { color: rgba(255,255,255,0.8); }
+  .contact-info p { font-size: 14px; line-height: 1.7; margin-bottom: 2rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-icon { width: 40px; height: 40px; min-width: 40px; background: rgba(201,148,58,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .contact-item h5 { font-size: 12px; font-weight: 600; color: var(--gold-light); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1px; }
+  .contact-item p { font-size: 13px; color: rgba(255,255,255,0.7); }
+  .contact-form { background: rgba(255,255,255,0.08); border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.12); }
+  .contact-form h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 1.5rem; }
+  .contact-form .form-field label { color: rgba(255,255,255,0.8); }
+  .contact-form .form-field input,
+  .contact-form .form-field select,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);
+    color: var(--white);
+  }
+  .contact-form .form-field input::placeholder { color: rgba(255,255,255,0.4); }
+  .contact-form textarea { width: 100%; padding: 11px 14px; border-radius: 8px; border: 1.5px solid rgba(255,255,255,0.2); font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--white); background: rgba(255,255,255,0.1); outline: none; resize: vertical; min-height: 100px; }
+  .submit-btn {
+    width: 100%; background: var(--gold); color: var(--forest); border: none;
+    padding: 13px; border-radius: 8px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 600; cursor: pointer; margin-top: .8rem;
+    transition: background .2s;
+  }
+  .submit-btn:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0e2518; color: rgba(255,255,255,0.55); font-size: 13px;
+    padding: 2.5rem 3rem; display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: gap;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  footer .foot-brand { font-family: 'Playfair Display', serif; color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 600; }
+  footer .foot-brand span { display: block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 400; color: var(--gold); margin-top: 2px; }
+  footer .kenya-flag { display: flex; gap: 0; height: 16px; border-radius: 3px; overflow: hidden; align-items: center; }
+  .flag-stripe { height: 100%; flex: 1; }
+
+  /* Animations */
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { animation: fadeInUp .7s both; }
+  .hero-content > *:nth-child(1) { animation-delay: .1s; }
+  .hero-content > *:nth-child(2) { animation-delay: .2s; }
+  .hero-content > *:nth-child(3) { animation-delay: .35s; }
+  .hero-content > *:nth-child(4) { animation-delay: .5s; }
+  .hero-stats { animation: fadeInUp .7s .5s both; }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--forest); padding: 1.5rem; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .hamburger { display: flex; }
+    section { padding: 60px 1.5rem; }
+    .hero-content { padding: 0 1.5rem; }
+    .hero-stats { right: 1.5rem; bottom: 30px; }
+    .about-grid, .portal-wrap, .contact-grid { grid-template-columns: 1fr; }
+    .about-img-card { right: 0; }
+    .portal-dashboard { order: -1; }
+    .pay-form-row, .payment-methods, .att-summary { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: .8rem; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .hero-stats { flex-wrap: wrap; position: static; margin-top: 2.5rem; }
+    .hero-stats .stat { border: none !important; padding: 12px 20px; }
+    .grades-table { font-size: 11px; }
+    .grades-table td, .grades-table th { padding: 8px 10px; }
+  }
+
+  /* Notices panel */
+  .notice-list { display: flex; flex-direction: column; gap: .8rem; }
+  .notice-item { background: var(--white); border-radius: 10px; padding: 1rem 1.2rem; border: 1px solid var(--border); display: flex; gap: 1rem; align-items: flex-start; }
+  .notice-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--forest); margin-top: 5px; flex-shrink: 0; }
+  .notice-dot.urgent { background: var(--red-kenya); }
+  .notice-dot.info { background: var(--gold); }
+  .notice-item h5 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .notice-item p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+  .notice-item time { font-size: 11px; color: var(--muted); white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a class="nav-brand" href="#hero">
+    <div class="nav-logo">CC</div>
+    <div class="nav-title">Concordia Comprehensive School<span>Nairobi, Kenya · Est. 2003</span></div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#staff">Staff</a></li>
+    <li><a href="#portal">Parent Portal</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#portal" class="nav-cta">Guardian Login</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Nurturing Excellence Since 2003</div>
+    <h1 class="hero-title">Where <em>Every Student</em><br>Finds Their Purpose</h1>
+    <p class="hero-sub">Concordia Comprehensive School offers a transformative education rooted in Kenyan values — developing critical thinkers, innovators, and leaders ready for a dynamic world.</p>
+    <div class="hero-actions">
+      <a href="#portal" class="btn-primary">Parent Portal</a>
+      <a href="#academics" class="btn-outline">Explore Academics</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">1,200+</span><span class="stat-lbl">Students</span></div>
+    <div class="stat"><span class="stat-num">98%</span><span class="stat-lbl">Pass Rate</span></div>
+    <div class="stat"><span class="stat-num">80+</span><span class="stat-lbl">Teachers</span></div>
+    <div class="stat"><span class="stat-num">22+</span><span class="stat-lbl">Years</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img">🏫</div>
+      <div class="about-img-card">
+        <strong>#1</strong>
+        <span>County Rankings<br>2023 &amp; 2024</span>
+      </div>
+    </div>
+    <div>
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">A Legacy of Transforming Lives</h2>
+      <p style="font-size:15px; line-height:1.8; color:var(--muted); margin-bottom:2rem;">Founded in 2003, Concordia Comprehensive School has grown into one of Kenya's most respected institutions. Our holistic approach balances 8-4-4 and CBC curriculum excellence with character formation, sports, arts, and technology — preparing students for Kenya and the world.</p>
+      <div class="about-vals">
+        <div class="val-item">
+          <div class="val-icon">🌿</div>
+          <div class="val-text">
+            <h4>Integrity First</h4>
+            <p>We cultivate moral courage and ethical decision-making in all students.</p>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-icon">💡</div>
+          <div class="val-text">
+            <h4>Academic Excellence</h4>
+            <p>Consistently achieving top KCSE results in Nairobi and nationally.</p>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-icon">🤝</div>
+          <div class="val-text">
+            <h4>Community Partnership</h4>
+            <p>Parents and guardians are integral partners in every student's journey.</p>
+          </div>
+        </div>
+        <div class="val-item">
+          <div class="val-icon">🌍</div>
+          <div class="val-text">
+            <h4>Global Readiness</h4>
+            <p>Graduates who compete and lead at regional and international levels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMICS -->
+<section id="academics">
+  <div class="section-header centered">
+    <p class="section-label">Academics</p>
+    <h2 class="section-title">Comprehensive Learning Pathways</h2>
+    <p class="section-sub">From ECD through Form 6, our programmes are designed to challenge, inspire and equip every learner.</p>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="prog-icon">🧒</div>
+      <h3>Early Childhood (ECD)</h3>
+      <p>Play-based, inquiry-driven foundation for children aged 4–6, aligned with CBC.</p>
+      <ul><li>Literacy &amp; Numeracy</li><li>Creative Arts</li><li>Social Skills</li><li>Environmental Activities</li></ul>
+    </div>
+    <div class="program-card">
+      <div class="prog-icon">📚</div>
+      <h3>Lower Primary (Grades 1–3)</h3>
+      <p>Core competency development through CBC with hands-on learning and mother-tongue literacy.</p>
+      <ul><li>English &amp; Kiswahili</li><li>Mathematics</li><li>Environmental Science</li><li>Creative Arts &amp; Sports</li></ul>
+    </div>
+    <div class="program-card">
+      <div class="prog-icon">🔭</div>
+      <h3>Upper Primary (Grades 4–9)</h3>
+      <p>Building critical thinking and STEM skills aligned with CBC competency framework.</p>
+      <ul><li>Sciences &amp; Technology</li><li>Social Studies</li><li>CRE / IRE</li><li>Business Studies</li></ul>
+    </div>
+    <div class="program-card">
+      <div class="prog-icon">🎓</div>
+      <h3>Secondary (Forms 1–4)</h3>
+      <p>KCSE preparation with emphasis on sciences, humanities and technical subjects.</p>
+      <ul><li>Physics, Chemistry, Biology</li><li>Mathematics</li><li>History &amp; Geography</li><li>Computer Studies</li></ul>
+    </div>
+    <div class="program-card">
+      <div class="prog-icon">🏆</div>
+      <h3>Co-Curricular Activities</h3>
+      <p>Sports, arts, debate, clubs and leadership development for whole-child growth.</p>
+      <ul><li>Football, Rugby, Volleyball</li><li>Drama &amp; Music</li><li>Science Congress</li><li>Student Council</li></ul>
+    </div>
+    <div class="program-card">
+      <div class="prog-icon">💻</div>
+      <h3>ICT &amp; STEM Track</h3>
+      <p>Dedicated technology stream with robotics, coding and digital literacy from Grade 4.</p>
+      <ul><li>Coding &amp; Robotics</li><li>Digital Media</li><li>STEM Projects</li><li>Tech Competitions</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section id="facilities">
+  <div class="section-header centered">
+    <p class="section-label">Our Facilities</p>
+    <h2 class="section-title">World-Class Environment for Learning</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.65);">Concordia's campus is designed to inspire curiosity, collaboration and excellence in every dimension of school life.</p>
+  </div>
+  <div class="facilities-grid">
+    <div class="facility-card">
+      <div class="fac-icon">🔬</div>
+      <h4>Science Laboratories</h4>
+      <p>3 fully equipped labs — Physics, Chemistry &amp; Biology — with modern instruments and safety gear.</p>
+      <span class="fac-badge">Modernised 2023</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">💻</div>
+      <h4>ICT Computer Lab</h4>
+      <p>120-seat computer lab with high-speed fibre internet and latest software suite.</p>
+      <span class="fac-badge">Fibre Connected</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">📖</div>
+      <h4>Modern Library</h4>
+      <p>10,000+ physical volumes, e-library access, reading lounges and research stations.</p>
+      <span class="fac-badge">Digital Access</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">⚽</div>
+      <h4>Sports Complex</h4>
+      <p>Full-size football pitch, volleyball &amp; basketball courts, athletics track and swimming pool.</p>
+      <span class="fac-badge">Olympic Standard</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🎭</div>
+      <h4>Auditorium & Performing Arts</h4>
+      <p>500-seat auditorium with professional lighting, sound and backstage facilities for events.</p>
+      <span class="fac-badge">500 Seat</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🍽️</div>
+      <h4>Modern Dining Hall</h4>
+      <p>Hygienic, spacious dining facility serving balanced Kenyan meals — breakfast, lunch &amp; supper.</p>
+      <span class="fac-badge">HACCP Certified</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🏠</div>
+      <h4>Student Dormitories</h4>
+      <p>Secure, comfortable boarding facilities for boys and girls with 24-hour supervision.</p>
+      <span class="fac-badge">Boarding</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">⚕️</div>
+      <h4>School Clinic</h4>
+      <p>On-site registered nurse, basic medical care, first aid and mental health counselling.</p>
+      <span class="fac-badge">Nurse on Duty</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🎨</div>
+      <h4>Art & Design Studio</h4>
+      <p>Dedicated fine arts studio, photography darkroom and graphic design workstations.</p>
+      <span class="fac-badge">Creative Hub</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🌳</div>
+      <h4>Green Campus</h4>
+      <p>Solar-powered buildings, rainwater harvesting, school garden and environment club.</p>
+      <span class="fac-badge">Eco-Certified</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🔒</div>
+      <h4>Security & Safety</h4>
+      <p>24-hour security guards, CCTV coverage, controlled entry/exit and emergency protocols.</p>
+      <span class="fac-badge">CCTV Live</span>
+    </div>
+    <div class="facility-card">
+      <div class="fac-icon">🚌</div>
+      <h4>School Transport</h4>
+      <p>Fleet of 12 GPS-tracked school buses covering major routes across Nairobi and surrounds.</p>
+      <span class="fac-badge">GPS Tracked</span>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section id="staff">
+  <div class="section-header centered">
+    <p class="section-label">Our Team</p>
+    <h2 class="section-title">Dedicated Educators &amp; Leaders</h2>
+    <p class="section-sub">Our highly qualified staff bring passion, expertise and a commitment to every student's success.</p>
+  </div>
+  <div class="staff-grid">
+    <div class="staff-card">
+      <div class="staff-avatar">MW</div>
+      <div class="staff-info">
+        <h4>Dr. Mary Wanjiku</h4>
+        <div class="role">Principal</div>
+        <p>PhD in Education, 24 years experience. Passionate champion of student excellence and wellbeing.</p>
+      </div>
+    </div>
+    <div class="staff-card">
+      <div class="staff-avatar">JO</div>
+      <div class="staff-info">
+        <h4>Mr. James Ochieng</h4>
+        <div class="role">Deputy Principal — Academics</div>
+        <p>MSc Mathematics, KNEC examiner. Drives the school's consistent top KCSE performance.</p>
+      </div>
+    </div>
+    <div class="staff-card">
+      <div class="staff-avatar">FK</div>
+      <div class="staff-info">
+        <h4>Ms. Faith Kamau</h4>
+        <div class="role">Head of Sciences</div>
+        <p>BSc Chemistry (University of Nairobi). Leads award-winning Science Congress team.</p>
+      </div>
+    </div>
+    <div class="staff-card">
+      <div class="staff-avatar">PN</div>
+      <div class="staff-info">
+        <h4>Mr. Peter Ndungu</h4>
+        <div class="role">ICT &amp; STEM Coordinator</div>
+        <p>BSc Computer Science, certified Google educator. Runs the robotics and coding clubs.</p>
+      </div>
+    </div>
+    <div class="staff-card">
+      <div class="staff-avatar">LN</div>
+      <div class="staff-info">
+        <h4>Ms. Lydia Njeri</h4>
+        <div class="role">Head of Guidance &amp; Counselling</div>
+        <p>MA Counselling Psychology. Supports student mental health, discipline and career guidance.</p>
+      </div>
+    </div>
+    <div class="staff-card">
+      <div class="staff-avatar">SM</div>
+      <div class="staff-info">
+        <h4>Mr. Samuel Mutua</h4>
+        <div class="role">Director of Sports</div>
+        <p>National athletics coach, leads all sports programs and inter-school competitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARENT PORTAL -->
+<section id="portal">
+  <div class="section-header">
+    <p class="section-label">Parent &amp; Guardian Portal</p>
+    <h2 class="section-title">Stay Connected to Your Child's Journey</h2>
+    <p class="section-sub">Access grades, attendance, school notices and pay fees — all from one secure portal, anytime.</p>
+  </div>
+  <div class="portal-wrap">
+    <!-- Login form -->
+    <div>
+      <div class="portal-login" id="login-panel">
+        <h3>Guardian Login</h3>
+        <p>Sign in with your portal credentials provided at enrolment.</p>
+        <div class="form-field">
+          <label>Student Admission Number</label>
+          <input type="text" id="admission-num" placeholder="e.g. CCS/2024/0087">
+        </div>
+        <div class="form-field">
+          <label>Guardian ID / Password</label>
+          <input type="password" id="portal-pass" placeholder="Enter your password">
+        </div>
+        <div class="form-field">
+          <label>Select Term</label>
+          <select id="term-select">
+            <option>Term 1 — 2025</option>
+            <option selected>Term 2 — 2025</option>
+            <option>Term 3 — 2025</option>
+          </select>
+        </div>
+        <button class="portal-btn" onclick="loginPortal()">Login to Portal</button>
+        <p class="portal-demo-note">🔑 Demo: use any admission number &amp; password to explore the portal.</p>
+      </div>
+    </div>
+
+    <!-- Dashboard (hidden until login) -->
+    <div class="portal-dashboard" id="portal-dash">
+      <div class="dash-header">
+        <div class="student-info">
+          <h3>Kevin Mwangi Otieno</h3>
+          <p>Admission: CCS/2024/0087 · Form 3A · Boarding Student</p>
+          <div class="dash-badges">
+            <span class="dbadge good">Academic: Excellent</span>
+            <span class="dbadge good">Attendance: 94%</span>
+            <span class="dbadge warn">Fees: 60% Paid</span>
+          </div>
+        </div>
+        <button onclick="logoutPortal()" style="background:rgba(255,255,255,0.15); color:white; border:1px solid rgba(255,255,255,0.3); padding:8px 16px; border-radius:8px; cursor:pointer; font-size:13px;">Logout</button>
+      </div>
+      <div class="dash-tabs">
+        <button class="dash-tab active" onclick="switchTab(this,'grades')">📊 Grades</button>
+        <button class="dash-tab" onclick="switchTab(this,'attendance')">📅 Attendance</button>
+        <button class="dash-tab" onclick="switchTab(this,'fees')">💳 Fees &amp; Payment</button>
+        <button class="dash-tab" onclick="switchTab(this,'notices')">📢 Notices</button>
+        <button class="dash-tab" onclick="switchTab(this,'messages')">✉️ Messages</button>
+      </div>
+
+      <!-- GRADES -->
+      <div class="tab-panel active" id="tab-grades">
+        <table class="grades-table">
+          <thead><tr><th>Subject</th><th>Teacher</th><th>Mid-Term</th><th>End-Term</th><th>Grade</th><th>Remark</th></tr></thead>
+          <tbody>
+            <tr><td>Mathematics</td><td>Mr. Ochieng</td><td>82</td><td>88</td><td><span class="grade-pill grade-A">A</span></td><td>Excellent</td></tr>
+            <tr><td>English</td><td>Ms. Adhiambo</td><td>74</td><td>79</td><td><span class="grade-pill grade-B">B+</span></td><td>Very Good</td></tr>
+            <tr><td>Kiswahili</td><td>Mr. Maina</td><td>78</td><td>81</td><td><span class="grade-pill grade-A">A-</span></td><td>Excellent</td></tr>
+            <tr><td>Biology</td><td>Ms. Kamau</td><td>88</td><td>91</td><td><span class="grade-pill grade-A">A</span></td><td>Exceptional</td></tr>
+            <tr><td>Chemistry</td><td>Mr. Kariuki</td><td>70</td><td>75</td><td><span class="grade-pill grade-B">B</span></td><td>Good</td></tr>
+            <tr><td>Physics</td><td>Mr. Waithaka</td><td>65</td><td>72</td><td><span class="grade-pill grade-B">B-</span></td><td>Good</td></tr>
+            <tr><td>Geography</td><td>Ms. Wanjiru</td><td>77</td><td>80</td><td><span class="grade-pill grade-B">B+</span></td><td>Very Good</td></tr>
+            <tr><td>Computer Studies</td><td>Mr. Ndungu</td><td>90</td><td>94</td><td><span class="grade-pill grade-A">A</span></td><td>Exceptional</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:var(--muted);margin-top:.8rem;">Term 2 — 2025 · Position in Class: <strong style="color:var(--forest)">3rd out of 42 students</strong></p>
+      </div>
+
+      <!-- ATTENDANCE -->
+      <div class="tab-panel" id="tab-attendance">
+        <div class="att-summary">
+          <div class="att-card"><div class="att-num">94%</div><div class="att-lbl">Overall Attendance</div></div>
+          <div class="att-card"><div class="att-num">3</div><div class="att-lbl">Days Absent</div></div>
+          <div class="att-card"><div class="att-num">47</div><div class="att-lbl">Days Present</div></div>
+        </div>
+        <div class="att-calendar">
+          <h4>Attendance Calendar — May 2025</h4>
+          <div class="cal-days" id="cal-grid"></div>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:1rem;">Absences on: 7 May (sick — medical note filed), 15 May (family matter — approved), 22 May (sick — awaiting note).</p>
+      </div>
+
+      <!-- FEES -->
+      <div class="tab-panel" id="tab-fees">
+        <div class="fees-overview">
+          <h4>Fee Statement — Term 2 · 2025</h4>
+          <div class="fees-amounts">
+            <div class="fee-amount"><div class="amount">KES 45,000</div><div class="lbl">Total Fees</div></div>
+            <div class="fee-amount"><div class="amount">KES 27,000</div><div class="lbl">Amount Paid</div></div>
+            <div class="fee-amount"><div class="amount" style="color:#f4c97e;">KES 18,000</div><div class="lbl">Balance Due</div></div>
+          </div>
+          <div class="progress-bar"><div class="progress-fill"></div></div>
+          <p style="font-size:11px;opacity:.65;margin-top:.5rem;">60% paid · Due date: 30 June 2025</p>
+        </div>
+        <div class="payment-form" id="pay-form-wrap">
+          <h4>Make a Payment</h4>
+          <div class="form-field">
+            <label>Payment Amount (KES)</label>
+            <input type="number" id="pay-amount" placeholder="Enter amount" value="18000" style="background:var(--cream);">
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:.8rem;">Select Payment Method</label>
+            <div class="payment-methods">
+              <div class="pay-method selected" onclick="selectMethod(this)">
+                <div class="pm-icon">📱</div>
+                <div class="pm-name">M-PESA</div>
+              </div>
+              <div class="pay-method" onclick="selectMethod(this)">
+                <div class="pm-icon">💳</div>
+                <div class="pm-name">Card / Bank</div>
+              </div>
+              <div class="pay-method" onclick="selectMethod(this)">
+                <div class="pm-icon">🏦</div>
+                <div class="pm-name">Airtel Money</div>
+              </div>
+            </div>
+          </div>
+          <div id="mpesa-fields">
+            <div class="form-field">
+              <label>M-PESA Phone Number</label>
+              <input type="tel" placeholder="07XX XXX XXX" id="mpesa-phone">
+            </div>
+          </div>
+          <div id="card-fields" style="display:none;">
+            <div class="pay-form-row">
+              <div class="form-field"><label>Card Number</label><input placeholder="**** **** **** ****"></div>
+              <div class="form-field"><label>Expiry</label><input placeholder="MM/YY"></div>
+            </div>
+            <div class="form-field"><label>CVV</label><input placeholder="***" style="max-width:120px"></div>
+          </div>
+          <button class="portal-btn" onclick="submitPayment()">💳 Pay KES <span id="pay-btn-amount">18,000</span> Now</button>
+          <p style="font-size:11px;color:var(--muted);margin-top:.8rem;text-align:center;">🔒 Secured by Pesalink / M-PESA STK Push · Receipt sent to guardian email &amp; SMS</p>
+        </div>
+        <div class="pay-success" id="pay-success">
+          <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+          <h4>Payment Successful!</h4>
+          <p>KES 18,000 paid via M-PESA · Transaction ID: <strong>QBN7R4MP92</strong><br>Receipt sent to 0722•••345 and guardian email.<br>Balance remaining: <strong>KES 0</strong> — Fully Paid!</p>
+        </div>
+      </div>
+
+      <!-- NOTICES -->
+      <div class="tab-panel" id="tab-notices">
+        <div class="notice-list">
+          <div class="notice-item">
+            <div class="notice-dot urgent"></div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:.5rem">
+                <h5>📢 End-of-Term Exam Schedule Released</h5>
+                <time>28 May 2025</time>
+              </div>
+              <p>Term 2 end-of-term examinations run 10–20 June 2025. Full timetable uploaded on portal. Students to report by 7:00 AM daily with own stationery.</p>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-dot info"></div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:.5rem">
+                <h5>🏆 Science Congress — Call for Projects</h5>
+                <time>20 May 2025</time>
+              </div>
+              <p>All Form 3 &amp; 4 students are invited to submit proposals for the 2025 County Science Congress. Deadline for proposals: 5 June 2025. See Mr. Ndungu for guidelines.</p>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-dot"></div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:.5rem">
+                <h5>🎓 Parent-Teacher Conference — Term 2</h5>
+                <time>15 May 2025</time>
+              </div>
+              <p>The Term 2 Parent-Teacher Conference will be held on Saturday 7 June 2025, 9:00 AM – 1:00 PM. Please book your 20-minute slot via the portal or call the school office.</p>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-dot"></div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:.5rem">
+                <h5>🚌 New Bus Route — Kasarani/Mirema</h5>
+                <time>5 May 2025</time>
+              </div>
+              <p>Effective 12 May, a new bus route covering Kasarani, Mirema and Mwiki is operational. Pickup at 6:15 AM. Contact the transport office to register your child.</p>
+            </div>
+          </div>
+          <div class="notice-item">
+            <div class="notice-dot info"></div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:start;gap:.5rem">
+                <h5>💊 Clinic: Annual Medical Check-up</h5>
+                <time>1 May 2025</time>
+              </div>
+              <p>All boarding students undergo annual medical check-ups this term (Week 7–8). Results communicated to guardians. Please ensure clinic card is up to date.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="tab-panel" id="tab-messages">
+        <div class="messages-list">
+          <div class="message-item unread">
+            <div class="msg-meta">
+              <span class="msg-from">Ms. Kamau (Biology Teacher)</span>
+              <span class="msg-date">27 May 2025</span>
+            </div>
+            <div class="msg-subject">Kevin's Biology Project — Outstanding Work</div>
+            <div class="msg-preview">Dear Mr./Mrs. Otieno, I wanted to personally commend Kevin on his excellent biology project on cellular respiration. He scored 48/50 and his model was selected to represent the school...</div>
+          </div>
+          <div class="message-item">
+            <div class="msg-meta">
+              <span class="msg-from">Ms. Njeri (Counsellor)</span>
+              <span class="msg-date">20 May 2025</span>
+            </div>
+            <div class="msg-subject">Career Day — Kevin's Interest Profile</div>
+            <div class="msg-preview">Following our Career Day activity, Kevin has shown strong interest in Medicine and Computer Science. We have resources and next steps to share with you as a guardian...</div>
+          </div>
+          <div class="message-item">
+            <div class="msg-meta">
+              <span class="msg-from">School Finance Office</span>
+              <span class="msg-date">3 May 2025</span>
+            </div>
+            <div class="msg-subject">Fee Payment Reminder — Term 2 Balance</div>
+            <div class="msg-preview">This is a courtesy reminder that there is an outstanding fee balance of KES 18,000 for Term 2 2025. Please make payment before 30 June 2025 to avoid late fees...</div>
+          </div>
+          <div class="message-item">
+            <div class="msg-meta">
+              <span class="msg-from">Mr. Mutua (Sports)</span>
+              <span class="msg-date">28 Apr 2025</span>
+            </div>
+            <div class="msg-subject">Selection for Athletics Regional Championship</div>
+            <div class="msg-preview">Congratulations — Kevin has been selected for the 400m relay team representing Concordia at the Nairobi Region Athletics Championship on 14 June. Parental consent form attached...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">We're Here for Your Family</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Our office is open Monday through Friday, 7:00 AM – 5:30 PM. We welcome visits, calls and messages from parents and guardians at any time.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h5>Location</h5>
+            <p>Concordia Road, off Thika Superhighway<br>Ruiru, Kiambu County, Kenya</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h5>Phone</h5>
+            <p>+254 712 345 678 (Main Office)<br>+254 733 456 789 (Admissions)</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <h5>Email</h5>
+            <p>info@concordiaschool.ac.ke<br>admissions@concordiaschool.ac.ke</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <h5>Office Hours</h5>
+            <p>Mon – Fri: 7:00 AM – 5:30 PM<br>Sat: 8:00 AM – 12:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <div class="form-field">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+254 7XX XXX XXX">
+      </div>
+      <div class="form-field">
+        <label>Enquiry Type</label>
+        <select>
+          <option>Admissions</option>
+          <option>Student Academic Progress</option>
+          <option>Fees &amp; Finance</option>
+          <option>Transport</option>
+          <option>Boarding</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="How can we help you?"></textarea>
+      </div>
+      <button class="submit-btn" onclick="this.textContent='✅ Message Sent! We\'ll respond within 24 hours.'">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="foot-brand">Concordia Comprehensive School<span>Ruiru, Kiambu County · Kenya</span></div>
+    <p style="margin-top:.5rem;font-size:12px;">© 2025 Concordia Comprehensive School. All rights reserved.</p>
+  </div>
+  <div style="text-align:right;">
+    <div style="display:flex;align-items:center;gap:.8rem;justify-content:flex-end;margin-bottom:.5rem;">
+      <div class="kenya-flag">
+        <div class="flag-stripe" style="background:#006600;"></div>
+        <div class="flag-stripe" style="background:#cc0000;"></div>
+        <div class="flag-stripe" style="background:#000000;"></div>
+        <div class="flag-stripe" style="background:#ffffff;"></div>
+      </div>
+      <span style="font-size:12px;">Proudly Kenyan</span>
+    </div>
+    <p style="font-size:12px;">KNEC Registered · TSC Compliant · MOE Approved</p>
+  </div>
+</footer>
+
+<script>
+// Hamburger
+document.getElementById('hamburger').addEventListener('click', function(){
+  document.getElementById('nav-links').classList.toggle('open');
+});
+
+// Portal Login
+function loginPortal() {
+  const adm = document.getElementById('admission-num').value.trim();
+  const pass = document.getElementById('portal-pass').value.trim();
+  if (!adm || !pass) { alert('Please enter admission number and password.'); return; }
+  document.getElementById('login-panel').style.display = 'none';
+  const dash = document.getElementById('portal-dash');
+  dash.classList.add('active');
+  buildCalendar();
+}
+
+function logoutPortal() {
+  document.getElementById('login-panel').style.display = 'block';
+  document.getElementById('portal-dash').classList.remove('active');
+  document.getElementById('admission-num').value = '';
+  document.getElementById('portal-pass').value = '';
+}
+
+// Tabs
+function switchTab(btn, id) {
+  document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+// Calendar builder
+function buildCalendar() {
+  const grid = document.getElementById('cal-grid');
+  if (!grid || grid.children.length > 0) return;
+  const days = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  days.forEach(d => {
+    const h = document.createElement('div');
+    h.className = 'cal-header'; h.textContent = d;
+    grid.appendChild(h);
+  });
+  const absent = [7, 15, 22];
+  const weekends = [];
+  // May 2025 starts on Thursday (day 4, 0-indexed)
+  const startDay = 3;
+  for (let i = 0; i < startDay; i++) {
+    const e = document.createElement('div'); e.className = 'cal-day future'; e.textContent = '';
+    grid.appendChild(e);
+  }
+  for (let d = 1; d <= 31; d++) {
+    const dow = (startDay + d - 1) % 7;
+    const div = document.createElement('div');
+    div.textContent = d;
+    if (dow === 0 || dow === 6) div.className = 'cal-day weekend';
+    else if (absent.includes(d)) div.className = 'cal-day absent';
+    else if (d > 28) div.className = 'cal-day future';
+    else div.className = 'cal-day present';
+    grid.appendChild(div);
+  }
+}
+
+// Payment method selector
+function selectMethod(el) {
+  document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('selected'));
+  el.classList.add('selected');
+  const name = el.querySelector('.pm-name').textContent;
+  document.getElementById('mpesa-fields').style.display = (name === 'M-PESA') ? 'block' : 'none';
+  document.getElementById('card-fields').style.display = (name === 'Card / Bank') ? 'block' : 'none';
+}
+
+// Update pay button
+document.addEventListener('DOMContentLoaded', function(){
+  const inp = document.getElementById('pay-amount');
+  if (inp) inp.addEventListener('input', function(){
+    const v = parseInt(this.value) || 0;
+    document.getElementById('pay-btn-amount').textContent = v.toLocaleString();
+  });
+});
+
+// Submit payment
+function submitPayment() {
+  const amount = document.getElementById('pay-amount').value;
+  if (!amount || amount < 1) { alert('Please enter a valid amount.'); return; }
+  const btn = document.querySelector('#pay-form-wrap .portal-btn');
+  btn.textContent = '⏳ Processing Payment...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('pay-form-wrap').style.display = 'none';
+    document.getElementById('pay-success').classList.add('show');
+  }, 2000);
+}
+
+// Active nav highlight on scroll
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  const scrollPos = window.scrollY + 100;
+  sections.forEach(s => {
+    if (s.offsetTop <= scrollPos && s.offsetTop + s.offsetHeight > scrollPos) {
+      document.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
+      const link = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+      if (link && !link.classList.contains('nav-cta')) link.style.color = '#e8b55a';
+    }
+  });
+});
+</script>
+</body>
+</html>
